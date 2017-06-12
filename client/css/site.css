@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .navbar-right a.avatar {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+    }
+
+    .navbar-right li ul a.avatar {
+        display: none;
+    }
+}

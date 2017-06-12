@@ -1,8 +1,12 @@
-npm-debug.log
-pids
-logs
-results
-build
 .grunt
 
+build
+config.json
+logs
+npm-debug.log
+pids
+results
+
+import/discogs_*.xml
 node_modules/
+public/*

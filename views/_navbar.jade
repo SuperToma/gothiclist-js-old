@@ -1,0 +1,26 @@
+nav.navbar.navbar-default.navbar-fixed-top
+    .container
+        .navbar-header
+            a.navbar-brand(href="/")= title
+        ul.nav.navbar-nav
+            +navlink('/entries', 'list', 'Bookmarks')
+        if user
+            ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown",href="#", class="avatar") #[img(src=user.photo)] #{user.displayName ? user.displayName : user.username}
+                        ul.dropdown-menu
+                            li
+                                a(href="/users/profile/me") #[i.fa.fa-fw &#xf007] Profile
+                            li
+                                a(href="/users/logout") #[i.fa.fa-fw &#xf08b] Logout
+        else
+            ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown", href="#") Login
+                        ul.dropdown-menu
+                            li
+                                a(href="/users/login/facebook") #[i.fa.fa-fw &#xf09a;] Facebook
+                            li
+                                a(href="/users/login/twitter") #[i.fa.fa-fw &#xf099;] Twitter
+                            li
+                                a(href="/users/login/vkontakte") #[i.fa.fa-fw &#xf189;] VKontakte

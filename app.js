@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser'
+import config from './config.json'
 import cookieSession from 'cookie-session'
 import createLogger from 'morgan'
 import csrfProtect from 'csurf'
@@ -6,14 +7,15 @@ import express from 'express'
 import flash from 'connect-flash'
 import { join as joinPaths } from 'path'
 import methodOverride from 'method-override'
-import mongoose from 'mongoose'
 import passport from 'passport'
+import sequelize from 'sequelize'
 
-mongoose.Promise = Promise
+sequelize.Promise = Promise
 
 import 'colors'
 
 import mainController from './controllers/main'
+import usersController from './controllers/users'
 
 const app = express()
 const publicPath = joinPaths(__dirname, 'public')
@@ -28,7 +30,7 @@ if (app.get('env') !== 'test') {
   app.use(createLogger(app.get('env') === 'development' ? 'dev' : 'combined'))
 }
 
-app.use(cookieSession({ name: 'gothiclist:session', secret: '#Youhou ma super clé sercrète !#' }))
+app.use(cookieSession({ name: 'gothiclist:session', secret: '$D8i3s~Qva{iV^kN*?zApS]oMsC(F9^{c87%qU_a6J(1M_1vZ)[!3' }))
 if (app.get('env') !== 'test') {
   app.use(csrfProtect())
 }
@@ -55,5 +57,6 @@ app.use((req, res, next) => {
 })
 
 app.use(mainController)
+app.use('/users', usersController)
 
 export default app

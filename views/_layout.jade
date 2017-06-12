@@ -1,0 +1,19 @@
+mixin navlink(linkUrl, glyph, label)
+  li(class= url.startsWith(linkUrl) ? 'active' : null)
+    a(href=linkUrl)
+      i.glyphicon(class="glyphicon-#{glyph}")
+      = ' ' + label
+
+doctype html
+html(lang="fr")
+  head
+    meta(charset="utf-8")
+    title= pageTitle ? pageTitle + ' — ' + title : title
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/gothiclist.0.1.0.css")
+  body
+    .container
+      include _navbar
+      include _flashes
+      block content
+    script(src="/gothiclist.0.1.0.js")
